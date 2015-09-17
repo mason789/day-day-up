@@ -1,18 +1,17 @@
-##**homestead与laravel安装**
+##homestead与laravel安装
 
 ####1. 首先要确保已经安装了虚拟机，VMware或者VirtualBox，并且安装了Vagrant,Vagrant将虚拟的开发环境打包成box，这样无论在什么平台都可以使用。
 
 ####2.在终端使用1命令来安装homestead，如果是老版本的vagrant,上面命令会失效，可以使用2命令
 
-然后通过克隆代码库来安装homestead，输入3命令，然后在homestead目录运行4命令来创建Homestead.yaml配置文件，这个文件位于"~/.homestead"目录下
+同样可以通过克隆代码库来安装homestead，输入3命令，然后在homestead目录运行4命令来创建Homestead.yaml配置文件，这个文件位于"~/.homestead"目录下
 
-`1.vagrant box add laravel/homestead`
+`1.vagrant box add laravel/homestead
+https://atlas.hashicorp.com/laravel/boxes/homestead`
 
-`2.vagrant box add laravel/homestead https://atlas.hashicorp.com/laravel/boxes/homestead`
+`2.git clone https://github.com/laravel/homestead.git homestead`
 
-`3.git clone https://github.com/laravel/homestead.git homestead`
-
-`4.bash init.sh`
+`3.bash init.sh`
 ####3.配置Homestead
 (1)设置平台（提供者）:打开"Homestead.yaml"配置文件，设置"provider:virtualbox"
 
@@ -87,7 +86,7 @@ Postgres: 54320 → Forwards To 5432
 
 
 
-##**通过composer创建项目**
+##通过composer创建项目
 
 ###由于composer国内被墙等情况，可以使用国内的镜像站[点这里](http://pkg.phpcomposer.com/)
 ### 在工作目录works中通过如下命令添加
@@ -102,6 +101,5 @@ Postgres: 54320 → Forwards To 5432
 ###然后使用以下命令来创建自己的helloworld项目
 `composer create-project laravel/laravel --prefer-dist helloworld`
 ###这样就建好了helloworld项目
-
 
 
