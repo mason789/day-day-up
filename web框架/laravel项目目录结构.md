@@ -37,3 +37,5 @@
 #### RESTful资源控制器是基于RESTful架构规范，关于RESTful的详细解释可以点击[这里](http://www.ruanyifeng.com/blog/2011/09/restful.html)，此外，关于路由控制器还有一篇不错的讲解，[在这里](https://phphub.org/topics/688)
 #### 依赖注入和控制器感觉是对控制器输入参数的一个限制
 #### 可以通过路由缓存来减少注册路由所花的时间
+
+lajsf
