@@ -38,4 +38,24 @@
 #### 依赖注入和控制器感觉是对控制器输入参数的一个限制
 #### 可以通过路由缓存来减少注册路由所花的时间
 
-第三方
+>###HTTP请求  
+
+* 取得请求实例有两种方法，一种是通过Facade,另一种是通过依赖注入，就是在控制器的构造函数或方法中对该类使用类型提示
+* 可以取得输入数据通过`Request::input（'name'）`等方法
+* 对于旧的输入数据可以通过`flash`方法将其存进`session`中，并且可以保存成一次性`session`
+* 如果想取得旧的输入数据，可以通过`Request`实例中的`old`方法，如果想在Blade模板中显示旧输入数据，可以使用辅助方法`old`
+* Laravel所建立的cookie会加密并加上认证记号，这样修改过的cookie会失效，可以取得cookie值、加上新的cookie到响应、建立永久有效的cookie
+* 可以通过`Request::file()`取得上传的文件，其返回对象是`Symfony\Component\HttpFoundation\File\UploadedFile`类的实例，可以对文件进行有效性判断、移动文件等等
+* `Request`还提供很多方法来检查HTTP请求，比如可以取得请求的URI、取得请求方法、确认请求路径是否符合特定格式、取得请求URL
+
+
+>###HTTP响应
+
++ 返回完整的响应实例，其实是`Illuminate\Http\Response`类的一个实例，可以自定义响应的HTTP状态吗及响应头，可以使用`new`一个`Response`实例或者使用`response`辅助方法来自定义
++ 如果想要使用`Response`方法但最终返回视图，那么可以使用`view`方法，同时可以使用`withcookie`方法附加cookies到响应，并且，大部分的`Response`方法可以使用链式调用,即`response()->view()->header()->withCookie()`
++ 重定向会产生`RedirectResponse`的实例，并且重定向至新的URL时会一并将数据存进一次性Session中
++ 可以使用`back()`方法重定向到前一个位置
++ 掉用辅助方法`redirect`且不带任何参数时，返回的`Redirector`实例可以调用任何方法，比如重定向到一个路由名称，路由可以带参数
++ 当使用辅助方法`response`不带任何参数时，可以返回`Illuminate\Contracts\Routing\ResponseFactory`的contract实例，可以建立JSON、JSONP响应，并且可以建立文件下载的响应
++ 如果想自定义被很多路由和控制器重复使用的响应，可以使用宏，`Illuminate\Contracts\Routing\ResponseFactory`的方法macro
+他会在`ResponseFactory`实例或者辅助方法`response`调用宏名称的时候被执行
