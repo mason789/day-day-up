@@ -1,6 +1,6 @@
 # day-day-up
 练习使用git、github以及markdown?
-##感觉从这里就已经可以联系markdown语法了有木有？
+##感觉从这里就已经可以练习markdown语法了有木有？
 ###啊哈哈
 
 **
