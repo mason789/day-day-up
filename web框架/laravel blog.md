@@ -33,3 +33,7 @@
 + 在项目文件夹下的config中的database.php配置文件记录了从.env中读入的数据库配置信息，在这里可以对数据库进行配置，为了便于团队协作开发，使用migration来管理数据库，这个就类似于git，使用`php artisan make:migration create_articles_table --create='articles'`命令在database/migrations下建立了一个数据迁移文件，这个文件带有日期标示，以后其他项目组成员要使用你的数据库的话，可以直接根据这个文件来生成,比如在`.env`中设置好数据库名称的话，就可以执行`php artisan migrate`这个命令来在自己的数据库中新建表。需要注意的是，migration提供了很好的数据库管理，甚至数据库的操作都可以回滚，使用`php artisan migrate:rollback`命令来调用迁移文件中的down方法来执行操作，修改完up中的定义以后，再执行`php artisan migrate`就好了
 
 + 当数据表创建好了以后，我们可以为这个表写一个Model类了，使用`php artisan make:model Article`来创建了一个Article模型，需要注意的是，在模型的创建中，模型名的定义要遵守`数据部复数而模型名单数并且首字母大写`这个规则。建好的模型位于app/Article.php,其中这个类继承自Eloquent/Model类。通过`php artisan tinker`工具提供了一个Eloquent跟数据库表交互的命令行界面，通过这个界面可以直接对数据库表进行操作。比如先实例化一个Article:`$article = new App\Article`,可以对表中字段进行赋值`$article->title='';`
+
+> 4. Form表单的使用
+
++ {!! Form::model($article,['url'=>'article/update']) !!}中model模式与open模式的区别：open模式的话，只要指定跳转的路由路径就好了，而model模式需要你传入一个接受的模型实例变量，在使用的过程中，Form其他input中的value值就会默认给填入相应的值，即使那个位置写的是null也是一样
